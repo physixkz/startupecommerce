@@ -23,7 +23,8 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.20.1",
+    "concurrently": "^8.2.2"
   },
   "engines": {
     "node": ">=14.0.0"
