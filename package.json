@@ -4,6 +4,9 @@
   "description": "MERN stack e-commerce application",
   "main": "server.js",
   "scripts": {
+    "start:backend": "cd backend && node server.js",
+    "start:frontend": "cd frontend && npm start",
+    "start:both": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start": "node server.js",
     "client": "cd frontend && npm start",
     "server": "nodemon server.js",

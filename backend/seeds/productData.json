@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Mens T-shirt",
+      "description": "Comfortable cotton T-shirt for men",
+      "price": 19.99,
+      "category": "Clothing",
+      "size": ["S", "M", "L", "XL"],
+      "color": "Blue",
+      "imageUrls": ["https://example.com/tshirt1.jpg"]
+    },
+    {
+      "name": "Womens Dress",
+      "description": "Elegant dress for women",
+      "price": 39.99,
+      "category": "Clothing",
+      "size": ["S", "M", "L"],
+      "color": "Black",
+      "imageUrls": ["https://example.com/dress1.jpg"]
+    }
+]
+  
