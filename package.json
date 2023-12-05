@@ -6,7 +6,7 @@
   "scripts": {
     "start:backend": "cd backend && npm start",
     "start:frontend": "cd frontend && npm start",
-    "start": "npm-run-all --parallel start:backend start:frontend",
+    "start": "npm run start:frontend && npm run start:backend",
     "client": "cd frontend && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
