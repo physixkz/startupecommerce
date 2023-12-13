@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb+srv://guerrafreddy:C3YojXYXAbbUKnTf@cluster0.lbttoju.mongodb.net/quantum-db?retryWrites=true&w=majority'
+  process.env.MONGODB_URI || ''
 );
 
 const db = mongoose.connection;
