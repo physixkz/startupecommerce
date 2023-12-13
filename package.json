@@ -1,47 +1,29 @@
 {
-  "name": "my-ecommerce-app",
-  "version": "1.0.0",
-  "description": "MERN stack e-commerce application",
-  "main": "server.js",
-  "scripts": {
-    "start:backend": "cd backend && npm start",
-    "start:frontend": "cd frontend && npm start",
-    "start": "npm run start:frontend && npm run start:backend",
-    "client": "cd frontend && npm start",
-    "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
-  },
-  "dependencies": {
-    "axios": "^1.6.2",
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^8.2.2",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "graphql": "^16.6.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.2",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.9.1",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.1"
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/physixkz/startupecommerce"
-  },
-  "keywords": [
-    "MERN",
-    "ecommerce",
-    "react",
-    "express",
-    "mongodb"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "npm-run-all": "^4.1.5"
-  }
+    "name": "clothingecommerce",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server/server.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "build": "cd client && npm run build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^5.1.0"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.8.8",
+        "axios": "^1.6.2",
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "graphql": "^16.8.1",
+        "install": "^0.13.0",
+        "jsonwebtoken": "^9.0.2",
+        "nodemon": "^3.0.2",
+        "npm": "^10.2.5"
+    }
 }
