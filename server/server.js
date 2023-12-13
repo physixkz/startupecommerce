@@ -26,6 +26,8 @@ app.get('/hello', (req, res) => {
   res.send('Hello, this is a custom route!');
 });
 
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 // Mount the product routes
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes); // Mount user routes
