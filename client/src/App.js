@@ -15,12 +15,14 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Shop />} />
+            {/* Updated the Route for the root path */}
+            <Route path="/" element={<ProductList />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
 
-            <Route path="/products" element={<ProductList />} />
+            {/* Optionally, you can keep the Shop component at a different route */}
+            <Route path="/shop" element={<Shop />} />
           </Routes>
         </Router>
       </ShopContextProvider>
