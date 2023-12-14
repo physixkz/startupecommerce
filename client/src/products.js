@@ -12,15 +12,15 @@ export const PRODUCTS = [
     },
     {
         id: 2,
-        ProductName: "Actual Cat Coding",
+       ProductName: "Actual Cat Coding",
+     price: 35,
+     productImage: CODECAT
+   },
+   {
+       id: 3,
+       ProductName: "simple",
         price: 35,
-        productImage: CODECAT
-    },
-    {
-        id: 3,
-        ProductName: "simple",
-        price: 35,
-        productImage: SIMPLE
+       productImage: SIMPLE
     },
     {
         id: 4,
@@ -29,5 +29,3 @@ export const PRODUCTS = [
         productImage: LEARN
     },
 ];
-
-

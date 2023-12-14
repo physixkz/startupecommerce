@@ -1,9 +1,27 @@
 import React from "react";
-import { PRODUCTS } from "../../products";
+import { useQuery, gql } from "@apollo/client";
 import { Product } from "./product";
 import "./shop.css";
 
+const GET_PRODUCTS = gql`
+  query {
+    products {
+      _id
+      name
+      description
+      price
+      category
+      imageUrls
+    }
+  }
+`;
+
 export const Shop = () => {
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   return (
     <div className="shop">
       <div className="shopTitle">
@@ -11,8 +29,8 @@ export const Shop = () => {
       </div>
 
       <div className="products">
-        {PRODUCTS.map((product) => (
-          <Product data={product} />
+        {data.products.map((product) => (
+          <Product key={product._id} data={product} />
         ))}
       </div>
     </div>
