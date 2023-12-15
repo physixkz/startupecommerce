@@ -4,18 +4,25 @@ const userTypeDefs = gql`
   type User {
     _id: ID
     email: String
-    # Add more fields as needed
+    username: String
+    # Add any other fields specific to your User type
+  }
+
+  type Auth {
+    token: ID!
+    user: User
   }
 
   type Query {
-    users: [User] # Query to retrieve all users
-    userById(userId: ID!): User # Query to fetch a user by ID
-    # You can add more queries here as needed
+    users: [User]
+    userById(userId: ID!): User
+    # Add any other queries specific to your project
   }
 
   type Mutation {
-    createUser(email: String!, password: String!): User # Mutation to create a new user
-    # You can add more mutations here as needed
+    createUser(email: String!, username: String!, password: String!): Auth
+    loginUser(email: String!, password: String!): Auth
+    # Add any other mutations specific to your project
   }
 `;
 

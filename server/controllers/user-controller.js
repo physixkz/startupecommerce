@@ -21,7 +21,8 @@ module.exports = {
 
   async createUser({ body }, res) {
     try {
-      const user = await User.create(body);
+      const { email, username, password } = body; // Extracting email, username, password
+      const user = await User.create({ email, username, password });
 
       if (!user) {
         return res.status(400).json({ message: 'Failed to create user' });
@@ -37,13 +38,14 @@ module.exports = {
 
   async login({ body }, res) {
     try {
-      const user = await User.findOne({ email: body.email });
+      const { email, password } = body; // Extracting email and password
+      const user = await User.findOne({ email });
 
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
-      const correctPw = await user.isCorrectPassword(body.password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         return res.status(401).json({ message: 'Invalid credentials' });
@@ -86,4 +88,6 @@ module.exports = {
       res.status(500).json({ message: 'Server error' });
     }
   },
+  
+  // Add more controller functions as needed
 };

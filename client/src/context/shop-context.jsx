@@ -5,11 +5,12 @@ const GET_PRODUCTS = gql`
   query {
     products {
       _id
-      name
-      description
-      price
       category
+      color
+      description
       imageUrls
+      name
+      price
     }
   }
 `;
@@ -28,23 +29,25 @@ export const ShopContext = createContext({
 
 export const ShopContextProvider = (props) => {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const [cartItems, setCartItems] = useState({});
 
   const getDefaultCart = () => {
     if (!data || !data.products) return {};
-
     return data.products.reduce((cart, product) => {
       cart[product._id] = 0;
       return cart;
     }, {});
   };
 
-  const [cartItems, setCartItems] = useState(getDefaultCart());
-
   useEffect(() => {
-    if (!loading && data && data.products) {
+    if (!loading && data && data.products && Object.keys(cartItems).length === 0) {
       setCartItems(getDefaultCart());
     }
-  }, [loading, data]);
+  }, [loading, data, cartItems]);
+
+  const isValidItemId = (itemId) => {
+    return data.products.some((product) => product._id === itemId);
+  };
 
   const getTotalCartAmount = () => {
     if (!data || !data.products) return 0;
@@ -60,16 +63,28 @@ export const ShopContextProvider = (props) => {
     }, 0);
   };
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+  const addToCart = (_id) => {
+    if (isValidItemId(_id)) {
+      setCartItems((prev) => ({ ...prev, [_id]: prev[_id] + 1 }));
+    } else {
+      console.error("Invalid item ID:", _id);
+    }
   };
 
-  const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: Math.max(0, prev[itemId] - 1) }));
+  const removeFromCart = (_id) => {
+    if (isValidItemId(_id)) {
+      setCartItems((prev) => ({ ...prev, [_id]: Math.max(0, prev[_id]) }));
+    } else {
+      console.error("Invalid item ID:", _id);
+    }
   };
 
-  const updateCartItemCount = (newAmount, itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+  const updateCartItemCount = (newAmount, _id) => {
+    if (isValidItemId(_id)) {
+      setCartItems((prev) => ({ ...prev, [_id]: newAmount }));
+    } else {
+      console.error("Invalid item ID:", _id);
+    }
   };
 
   const checkout = () => {

@@ -22,7 +22,7 @@ query {
 
 
 export const Cart = () => {
-  const { getTotalCartAmount, checkout } = useContext(ShopContext);
+  const { getTotalCartAmount, checkout, cartItems } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
@@ -32,21 +32,25 @@ export const Cart = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Ensure data and data.cartItems are defined before mapping over it
-  const cartItems = data && data.cartItems ? data.cartItems : [];
+  // Ensure data and data.products are defined before mapping over it
+  const products = data && data.products ? data.products : [];
 
   return (
     <div className="cart">
       <div>
         <h1>Your Cart Items</h1>
       </div>
-      <div className="cart">
-        {cartItems.map((item) => (
-          <CartItem key={item.id} data={item} />
-        ))}
-      </div>
-
       {totalAmount > 0 ? (
+        <div className="cart">
+          {products.map((product) => (
+            <CartItem key={product._id} data={product} />
+          ))}
+        </div>
+      ) : (
+        <h1>Your Shopping Cart is Empty</h1>
+      )}
+
+      {totalAmount > 0 && (
         <div className="checkout">
           <p>Subtotal: ${totalAmount}</p>
           <button onClick={() => navigate("/")}>Continue Shopping</button>
@@ -54,8 +58,6 @@ export const Cart = () => {
             Checkout
           </button>
         </div>
-      ) : (
-        <h1>Your Shopping Cart is Empty</h1>
       )}
     </div>
   );
