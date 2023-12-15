@@ -34,3 +34,13 @@
     grid-template-columns: 1fr;
   }
 }
+
+.ImageSection {
+  text-align: center; /* Center the image */
+  margin-bottom: 20px; /* Create space between image and text */
+}
+
+.about-image {
+  max-width: 300px; /* Set the maximum width of the image */
+  height: auto;
+}

@@ -1,9 +1,14 @@
 import React from "react";
 import "../components/About.css";
 import "font-awesome/css/font-awesome.min.css";
+import quantumThreadsImage from '../assets/logo/QuantumThreads-logos_black.png';
+
 export const About = () => {
   return (
     <div>
+      <div className="ImageSection">
+        <img src={quantumThreadsImage} alt="Quantum Threads" className="about-image" />
+      </div>
       <div className="About">
         <h2>About Us</h2>
         <p>
