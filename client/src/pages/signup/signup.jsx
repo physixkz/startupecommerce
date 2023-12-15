@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import quantumThreadsImage from '../../assets/logo/QuantumThreads-logos_black.png';
+import './signup.css';
 
 export const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -29,14 +31,16 @@ export const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="signup-container">
       <h2>Sign Up</h2>
+      <img src={quantumThreadsImage} alt="Quantum Threads" className="signup-image" />
       <div>
         <label>Email</label>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="signup-input"
         />
       </div>
       <div>
@@ -45,6 +49,7 @@ export const SignUp = () => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          className="signup-input"
         />
       </div>
       <div>
@@ -53,10 +58,13 @@ export const SignUp = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="signup-input"
         />
       </div>
-      <button onClick={handleSignUp}>Sign Up</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <button onClick={handleSignUp} className="signup-button">
+        Sign Up
+      </button>
+      {error && <p className="error-message">{error}</p>}
     </div>
   );
 };

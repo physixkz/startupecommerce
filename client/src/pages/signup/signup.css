@@ -1,0 +1,47 @@
+/* signup.css */
+
+/* Container styles */
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Input styles */
+  .signup-input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+/* Button styles */
+.signup-button {
+    padding: 10px 20px;
+    background-color: black; /* Change the background color to black */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .signup-button:hover {
+    background-color: #333; /* Darken the color on hover */
+  }
+  
+  /* Error message */
+  .error-message {
+    color: red;
+    margin-bottom: 15px;
+  }
+  
+  /* Image styles */
+  .signup-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  

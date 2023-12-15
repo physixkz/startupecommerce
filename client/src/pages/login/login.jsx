@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import quantumThreadsImage from '../../assets/logo/QuantumThreads-logos_black.png';
+import './login.css';
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -57,8 +59,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
+      <img src={quantumThreadsImage} alt="Quantum Threads" className="signup-image" />
       <form onSubmit={handleLogin}>
         <div>
           <label>Email</label>
@@ -67,6 +70,7 @@ const Login = () => {
             name="email"
             value={formState.email}
             onChange={handleChange}
+            className="login-input"
           />
         </div>
         <div>
@@ -76,10 +80,13 @@ const Login = () => {
             name="password"
             value={formState.password}
             onChange={handleChange}
+            className="login-input"
           />
         </div>
-        <button type="submit">Login</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit" className="login-button">
+          Login
+        </button>
+        {error && <p className="error-message">{error}</p>}
       </form>
     </div>
   );
